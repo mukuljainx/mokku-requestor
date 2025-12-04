@@ -1,24 +1,27 @@
 import { useState } from "react";
-import { restApiCalls } from "./apiCall";
-
-type APICallNameType = keyof typeof restApiCalls;
-
-const apiCalls = Object.keys(restApiCalls) as APICallNameType[];
+import { apiCallObjects } from "./apiCall";
 
 export const Rest = () => {
-    const [view, setView] = useState<APICallNameType>();
-    const [data, setData] = useState();
+    const [selectedApi, setSelectedApi] =
+        useState<(typeof apiCallObjects)[number]>();
+    const [data, setData] = useState<unknown>();
     const [loading, setLoading] = useState(false);
 
     return (
         <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-                {apiCalls.map((apiCallName) => (
+                {apiCallObjects.map((apiObject) => (
                     <button
-                        className={view === apiCallName ? "selected" : ""}
+                        key={apiObject.name}
+                        className={
+                            selectedApi?.name === apiObject.name
+                                ? "selected"
+                                : ""
+                        }
                         onClick={() => {
                             setLoading(true);
-                            restApiCalls[apiCallName]()
+                            apiObject
+                                .api()
                                 .then((data) => {
                                     setData(data);
                                     setLoading(false);
@@ -27,12 +30,20 @@ export const Rest = () => {
                                     setData(error);
                                     setLoading(false);
                                 });
-                            setView(apiCallName);
+                            setSelectedApi(apiObject);
                         }}
                     >
-                        {apiCallName}
+                        {apiObject.name}
                     </button>
                 ))}
+            </div>
+            <hr style={{ width: "100%" }} />
+            <div>
+                <h4>Request:</h4>
+                url: {selectedApi?.url}
+                {selectedApi?.params && (
+                    <div>params: {JSON.stringify(selectedApi?.params)}</div>
+                )}
             </div>
             <hr style={{ width: "100%" }} />
             {loading && <div>Loading</div>}

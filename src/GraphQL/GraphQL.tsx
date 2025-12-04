@@ -1,11 +1,15 @@
 import { useState } from "react";
 import { useLocationsQuery } from "../queries/locations";
 import { useMoviesQuery } from "../queries/movies";
+import { useCreateLocationMutation } from "../queries/locations.mutation";
 
 export const GraphQL = () => {
-    const [view, setView] = useState<"movies" | "locations">();
+    const [view, setView] = useState<
+        "movies" | "locations" | "createLocation"
+    >();
     const [fetchMovies, movies] = useMoviesQuery();
     const [fetchLocation, locations] = useLocationsQuery();
+    const [createLocation, creationData] = useCreateLocationMutation();
 
     let data;
     switch (view) {
@@ -15,6 +19,10 @@ export const GraphQL = () => {
         }
         case "movies": {
             data = movies;
+            break;
+        }
+        case "createLocation": {
+            data = creationData;
             break;
         }
     }
@@ -39,6 +47,15 @@ export const GraphQL = () => {
                     }}
                 >
                     Get Locations
+                </button>
+                <button
+                    className={view === "createLocation" ? "selected" : ""}
+                    onClick={() => {
+                        createLocation();
+                        setView("createLocation");
+                    }}
+                >
+                    Create Location
                 </button>
             </div>
             <hr style={{ width: "100%" }} />
