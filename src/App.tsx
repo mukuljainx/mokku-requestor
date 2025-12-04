@@ -1,9 +1,4 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
-import { useMoviesQuery } from "./queries/movies";
-import { useLocationsQuery } from "./queries/locations";
 import { Link, Route, Routes } from "react-router";
 import { GraphQL } from "./GraphQL";
 import { Rest } from "./Rest";
