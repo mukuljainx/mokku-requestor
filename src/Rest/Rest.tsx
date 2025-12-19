@@ -7,6 +7,8 @@ export const Rest = () => {
     const [data, setData] = useState<unknown>();
     const [loading, setLoading] = useState(false);
 
+    console.log("811 selectedApi", data);
+
     return (
         <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
