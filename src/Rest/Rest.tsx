@@ -1,18 +1,15 @@
 import { useState } from "react";
-import { apiCallObjects } from "./apiCall";
+import type { ApiCallConfig } from "./apiCall";
 
-export const Rest = () => {
-    const [selectedApi, setSelectedApi] =
-        useState<(typeof apiCallObjects)[number]>();
+export const Rest = ({ apiCalls }: { apiCalls: ApiCallConfig[] }) => {
+    const [selectedApi, setSelectedApi] = useState<ApiCallConfig>();
     const [data, setData] = useState<unknown>();
     const [loading, setLoading] = useState(false);
-
-    console.log("811 selectedApi", data);
 
     return (
         <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-                {apiCallObjects.map((apiObject) => (
+                {apiCalls.map((apiObject) => (
                     <button
                         key={apiObject.name}
                         className={

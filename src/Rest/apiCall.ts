@@ -1,6 +1,6 @@
 import axios from "axios";
 
-interface ApiCallConfig {
+export interface ApiCallConfig {
     url: string;
     params?: Record<string, unknown>;
     body?: unknown;
@@ -9,6 +9,11 @@ interface ApiCallConfig {
 }
 
 export const apiCallObjects: ApiCallConfig[] = [
+    {
+        url: "http://localhost:5173/rest/api/test",
+        api: () => axios.get("http://localhost:5173/rest/api/test"),
+        name: "local-get",
+    },
     {
         url: "http://demo5488429.mockable.io/a",
         api: () => axios.get("http://demo5488429.mockable.io/a"),
