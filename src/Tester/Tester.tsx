@@ -37,6 +37,7 @@ export const Tester = () => {
                     }}
                 >
                     <input
+                        name="url-input"
                         data-testid="url-input"
                         value={url}
                         onChange={(event) => setUrl(event.target.value)}
@@ -55,6 +56,7 @@ export const Tester = () => {
                         ))}
                     </select>
                     <textarea
+                        name="body"
                         data-testid="body-input"
                         rows={10}
                         value={body}
