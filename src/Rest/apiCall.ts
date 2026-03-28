@@ -20,19 +20,22 @@ export const apiCallObjects: ApiCallConfig[] = [
         name: "api",
     },
     {
-        url: "http://demo5488429.mockable.io/b",
+        url: "https://demo5488429.mockable.io/b",
         params: { z: 444, a: 22 },
         body: { message: "hello world" },
         api: () =>
-            axios.post("http://demo5488429.mockable.io/b?z=444&a=22", {
+            axios.post("https://demo5488429.mockable.io/b?z=444&a=22", {
                 message: "hello world",
             }),
         name: "apiWithQueryParam",
     },
     {
-        url: "http://demo5488429.mockable.io/a",
+        url: "https://demo5488429.mockable.io/a",
         api: async () => {
-            const urlInstance = new URL("/a", "http://demo5488429.mockable.io");
+            const urlInstance = new URL(
+                "/a",
+                "https://demo5488429.mockable.io",
+            );
             const response = await fetch(urlInstance);
             const json = await response.json();
             return json;
@@ -40,11 +43,11 @@ export const apiCallObjects: ApiCallConfig[] = [
         name: "fetchWithUrlInstance",
     },
     {
-        url: "http://demo5488429.mockable.io/a",
+        url: "https://demo5488429.mockable.io/a",
         params: { z: 444 },
         api: async () => {
             const request = new Request(
-                "http://demo5488429.mockable.io/a?z=444",
+                "https://demo5488429.mockable.io/a?z=444",
                 { method: "GET" },
             );
             const response = await fetch(request);
@@ -54,60 +57,60 @@ export const apiCallObjects: ApiCallConfig[] = [
         name: "fetchWithRequestObject",
     },
     {
-        url: "http://demo5488429.mockable.io/a",
-        api: () => fetch("http://demo5488429.mockable.io/a"),
+        url: "https://demo5488429.mockable.io/a",
+        api: () => fetch("https://demo5488429.mockable.io/a"),
         name: "fetchApi",
     },
     {
-        url: "http://demo5488429.mockable.io/patients/empi/P032/goals/ff2",
+        url: "https://demo5488429.mockable.io/patients/empi/P032/goals/ff2",
         api: () =>
             axios.get(
-                "http://demo5488429.mockable.io/patients/empi/P032/goals/ff2",
+                "https://demo5488429.mockable.io/patients/empi/P032/goals/ff2",
             ),
         name: "apiDynamic1",
     },
     {
-        url: "http://demo5488429.mockable.io/patients/empi/P032/goals/ff2",
+        url: "https://demo5488429.mockable.io/patients/empi/P032/goals/ff2",
         api: () =>
             axios.post(
-                "http://demo5488429.mockable.io/patients/empi/P032/goals/ff2?a=2&b=3",
+                "https://demo5488429.mockable.io/patients/empi/P032/goals/ff2?a=2&b=3",
                 { test: "data" },
             ),
         name: "apiDynamic1 POST",
     },
     {
-        url: "http://demo5488429.mockable.io/patients/empi/P012/goals/ff24",
+        url: "https://demo5488429.mockable.io/patients/empi/P012/goals/ff24",
         api: () =>
             axios.get(
-                "http://demo5488429.mockable.io/patients/empi/P012/goals/ff24",
+                "https://demo5488429.mockable.io/patients/empi/P012/goals/ff24",
             ),
         name: "apiDynamic2",
     },
     {
-        url: "http://demo6210424.mockable.io/409",
-        api: () => axios.get("http://demo6210424.mockable.io/409"),
+        url: "https://demo6210424.mockable.io/409",
+        api: () => axios.get("https://demo6210424.mockable.io/409"),
         name: "api409",
     },
     {
-        url: "http://demo6210424.mockable.io/404",
-        api: () => axios.get("http://demo6210424.mockable.io/404"),
+        url: "https://demo6210424.mockable.io/404",
+        api: () => axios.get("https://demo6210424.mockable.io/404"),
         name: "api404",
     },
     {
-        url: "https://demo5468585.mockable.io/events",
+        url: "https://demo3101470.mockable.io/events",
         body: { message: "hello world" },
         api: () =>
-            axios.post("https://demo5468585.mockable.io/events", {
+            axios.post("https://demo3101470.mockable.io/events", {
                 message: "hello world",
             }),
         name: "apiPost",
     },
     {
-        url: "https://demo5468585.mockable.io/events",
+        url: "https://demo3101470.mockable.io/events",
         body: { username: "example" },
         api: async () => {
             const request1 = new Request(
-                "https://demo5468585.mockable.io/events",
+                "https://demo3101470.mockable.io/events",
                 {
                     method: "POST",
                     body: JSON.stringify({ username: "example" }),
@@ -122,18 +125,18 @@ export const apiCallObjects: ApiCallConfig[] = [
 ];
 
 // function api() {
-//     return axios.get("http://demo5488429.mockable.io/a");
+//     return axios.get("https://demo5488429.mockable.io/a");
 // }
 
 // function apiWithQueryParam() {
-//     return axios.post("http://demo5488429.mockable.io/b?z=444&a=22", {
+//     return axios.post("https://demo5488429.mockable.io/b?z=444&a=22", {
 //         message: "hello world",
 //     });
 // }
 
 // // with url object
 // async function fetchWithUrlInstance() {
-//     const urlInstance = new URL("/a", "http://demo5488429.mockable.io");
+//     const urlInstance = new URL("/a", "https://demo5488429.mockable.io");
 
 //     const response = await fetch(urlInstance);
 //     const json = await response.json();
@@ -142,7 +145,7 @@ export const apiCallObjects: ApiCallConfig[] = [
 
 // // with Request object
 // async function fetchWithRequestObject() {
-//     const request = new Request("http://demo5488429.mockable.io/a?z=444", {
+//     const request = new Request("https://demo5488429.mockable.io/a?z=444", {
 //         method: "GET",
 //     });
 
@@ -152,37 +155,37 @@ export const apiCallObjects: ApiCallConfig[] = [
 // }
 
 // function fetchApi() {
-//     return fetch("http://demo5488429.mockable.io/a");
+//     return fetch("https://demo5488429.mockable.io/a");
 // }
 
 // function apiDynamic1() {
 //     return axios.get(
-//         "http://demo5488429.mockable.io/patients/empi/P032/goals/ff2",
+//         "https://demo5488429.mockable.io/patients/empi/P032/goals/ff2",
 //     );
 // }
 
 // function apiDynamic2() {
 //     return axios.get(
-//         "http://demo5488429.mockable.io/patients/empi/P012/goals/ff24",
+//         "https://demo5488429.mockable.io/patients/empi/P012/goals/ff24",
 //     );
 // }
 
 // function api409() {
-//     return axios.get("http://demo6210424.mockable.io/409");
+//     return axios.get("https://demo6210424.mockable.io/409");
 // }
 
 // function api404() {
-//     return axios.get("http://demo6210424.mockable.io/404");
+//     return axios.get("https://demo6210424.mockable.io/404");
 // }
 
 // function apiPost() {
-//     return axios.post("https://demo5468585.mockable.io/events", {
+//     return axios.post("https://demo3101470.mockable.io/events", {
 //         message: "hello world",
 //     });
 // }
 
 // async function postReqWithRequest() {
-//     const request1 = new Request("https://demo5468585.mockable.io/events", {
+//     const request1 = new Request("https://demo3101470.mockable.io/events", {
 //         method: "POST",
 //         body: JSON.stringify({ username: "example" }),
 //     });
