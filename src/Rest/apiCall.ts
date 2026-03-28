@@ -15,8 +15,8 @@ export const apiCallObjects: ApiCallConfig[] = [
         name: "local-get",
     },
     {
-        url: "http://demo5488429.mockable.io/a",
-        api: () => axios.get("http://demo5488429.mockable.io/a"),
+        url: "https://demo5488429.mockable.io/a",
+        api: () => axios.get("https://demo5488429.mockable.io/a"),
         name: "api",
     },
     {
