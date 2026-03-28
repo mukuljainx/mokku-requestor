@@ -20,6 +20,11 @@ export const apiCallObjects: ApiCallConfig[] = [
         name: "api",
     },
     {
+        url: "https://test.mokku.app/hello",
+        api: () => axios.get("https://test.mokku.app/hello"),
+        name: "api-self",
+    },
+    {
         url: "https://demo5488429.mockable.io/b",
         params: { z: 444, a: 22 },
         body: { message: "hello world" },
